@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme Variables */
+:root {
+  --font-robotoslab: "RobotoSlab-Regular", serif;
+  --font-robotoslab-medium: "RobotoSlab-Medium", serif;
+  --font-jetbrains: "JetBrainsMono-Regular", monospace;
+  --font-jetbrains-medium: "JetBrainsMono-Medium", monospace;
+  --font-spacegrotesk: "SpaceGrotesk-Regular", sans-serif;
+  --font-spacegrotest-bold: "SpaceGrotesk-Bold", sans-serif;
+
+  /* Light Theme */
+  --background: #ffffff;
+  --text: #1a1a1a;
+  --primary: #007bff;
+  --primary-foreground: #ffffff;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+
+  /* Light Theme Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] {
+  --background: #121212;
+  --text: #eaeaea;
+  --primary: #ffcc00;
+  --primary-foreground: #1a1a1a;
+  --card: #1e1e1e;
+  --card-foreground: #eaeaea;
+
+  /* Dark Theme Shadows - softer with colored glow */
+  --shadow-sm: 0 2px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(255, 204, 0, 0.03);
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(255, 204, 0, 0.05);
+  --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(255, 204, 0, 0.07);
+  --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(255, 204, 0, 0.04);
+  --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.6), 0 10px 15px rgba(255, 204, 0, 0.05);
+}
+
+body {
+  color: var(--text);
+  background-color: var(--background);
+  font-family: var(--font-robotoslab);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Font imports */
+@font-face {
+  font-family: "RobotoSlab-Regular";
+  src: url("/Fontz/RobotoSlab-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "RobotoSlab-Medium";
+  src: url("/Fontz/RobotoSlab-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrainsMono-Regular";
+  src: url("/Fontz/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrainsMono-Medium";
+  src: url("/Fontz/JetBrainsMono-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SpaceGrotesk-Regular";
+  src: url("/Fontz/SpaceGrotesk-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SpaceGrotesk-Bold";
+  src: url("/Fontz/SpaceGrotesk-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Utility Classes for fonts */
+.font-robotoslab {
+  font-family: var(--font-robotoslab);
+}
+
+.font-robotoslab-medium {
+  font-family: var(--font-robotoslab-medium);
+}
+
+.font-jetbrains {
+  font-family: var(--font-jetbrains);
+}
+
+.font-jetbrains-medium {
+  font-family: var(--font-jetbrains-medium);
+}
+
+.font-spacegrotesk {
+  font-family: var(--font-spacegrotesk);
+}
+
+.font-spacegrotest-bold {
+  font-family: var(--font-spacegrotest-bold);
+}
+
+/* Shadow Utilities */
+.shadow-light-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow-light {
+  box-shadow: var(--shadow);
+}
+
+.shadow-light-md {
+  box-shadow: var(--shadow-md);
+}
+
+.shadow-light-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.shadow-light-xl {
+  box-shadow: var(--shadow-xl);
+}
+
+/* Card styling */
+.card {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Form element styling */
+input,
+select,
+textarea {
+  background-color: var(--card);
+  color: var(--text);
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.25);
+}
+
+/* Button styling */
+.btn {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-family: var(--font-spacegrotest-bold);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
