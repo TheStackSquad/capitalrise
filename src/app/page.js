@@ -47,20 +47,20 @@ const HomePage = () => {
     </motion.h1>
 
     {/* Tagline Animation */}
-    <motion.p
-      initial={{ y: 50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{
-        type: 'spring',
-        stiffness: 100,
-        damping: 10,
-        delay: 0.5,
-      }}
-        className="relative text-lg xs:text-xl sm:px-4 font-robotoslab-medium text-center w-full
-                text-gray-blue dark:text-yellow-400 light:text-blue-700"
-    >
-      Let's grow your wealth, one calculation at a time!
-    </motion.p>
+  <motion.p
+  initial={{ y: 50, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{
+    type: 'spring',
+    stiffness: 100,
+    damping: 10,
+    delay: 0.5,
+  }}
+  className="relative text-lg xs:text-xl sm:px-4 font-robotoslab-medium text-center w-full
+             text-gray-blue dark:text-yellow-400 light:text-blue-700"
+>
+  Let&apos;s grow your wealth, one calculation at a time!
+</motion.p>
   </motion.div>
 </AnimatePresence>
   );
