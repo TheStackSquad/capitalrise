@@ -30,27 +30,28 @@ const GrowthToggle = ({ onToggle }) => {
     };
 
     return (
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg dark:shadow-gray-900/30">
-            <label className="block mb-2 text-lg font-jetbrains-medium text-gray-900 dark:text-primary">
-                Growth Type
-            </label>
-            <div className="flex gap-4">
-                {['monthly', 'quarterly', '6months'].map((type) => (
-                    <button
-                        key={type}
-                        onClick={() => handleToggle(type)}
-                        className={`px-4 py-2 rounded-md font-robotoslab-medium
-                            transition-all duration-300 ease-in-out 
-                        ${growthType === type
-                                ? 'bg-primary text-white scale-105 shadow-md shadow-primary/30'
-                                : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-400 hover:bg-gray-600 dark:hover:bg-gray-800 hover:scale-105'
-                            }`}
-                    >
-                        {type.charAt(0).toUpperCase() + type.slice(1)}
-                    </button>
-                ))}
-            </div>
-        </div>
+       <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg dark:shadow-gray-900/30">
+    <label className="block mb-2 text-lg font-jetbrains-medium text-gray-900 dark:text-primary">
+        Growth Type
+    </label>
+    <div className="flex flex-col xs:flex-col sm:flex-col md:flex-row gap-2 md:gap-4">
+        {['monthly', 'quarterly', '6months'].map((type) => (
+            <button
+                key={type}
+                onClick={() => handleToggle(type)}
+                className={`px-4 py-2 rounded-md font-robotoslab-medium
+                    w-full md:w-auto mb-2 md:mb-0
+                    transition-all duration-300 ease-in-out 
+                ${growthType === type
+                        ? 'bg-primary text-white scale-105 shadow-md shadow-primary/30'
+                        : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-400 hover:bg-gray-600 dark:hover:bg-gray-800 hover:scale-105'
+                    }`}
+            >
+                {type.charAt(0).toUpperCase() + type.slice(1)}
+            </button>
+        ))}
+    </div>
+</div>
     );
 };
 
