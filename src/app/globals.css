@@ -39,6 +39,7 @@
   /* Even lighter for popover elements */
   --popover-foreground: #e0e0e0;
   --primary: #ffcc00;
+    --primaryAlte: #534303;
   --primary-foreground: #121212;
   --button-bg: #ffcc00;
   --button-text: #121212;

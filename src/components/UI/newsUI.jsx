@@ -1,4 +1,3 @@
-// src/components/UI/newsUI.jsx
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -60,8 +59,8 @@ const NewsUI = () => {
                             key={filter}
                             onClick={() => setCategory(filter.toLowerCase())}
                             className={`px-4 py-2 rounded-full transition-colors ${category === filter.toLowerCase()
-                                    ? 'bg-[var(--primary)] text-[var(--primary-foreground)] dark:bg-[var(--primary)] dark:text-[var(--primary-foreground)]'
-                                    : 'bg-[var(--card)] text-[var(--text)] dark:bg-[var(--primary)] dark:text-[var(--primary-foreground)] dark:bg-opacity-80'
+                                ? 'bg-[var(--primary)] text-[var(--primary-foreground)] dark:bg-[var(--primary)] dark:text-[var(--primary-foreground)]'
+                                : 'bg-[var(--card)] text-[var(--text)] dark:bg-[var(--primary)] dark:text-[var(--primary-foreground)] dark:bg-opacity-80'
                                 }`}
                         >
                             {filter}
@@ -76,7 +75,10 @@ const NewsUI = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-[var(--card)] rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow dark:bg-[var(--primary)] dark:bg-opacity-20 dark:hover:bg-opacity-30 dark:border dark:border-[var(--primary)] dark:border-opacity-20"
+                            className="bg-[var(--card)] rounded-lg
+                            shadow-md overflow-hidden
+                            hover:shadow-lg transition-shadow
+                            dark:bg-[var(--primaryAlte)] dark:bg-opacity-20 dark:hover:bg-opacity-30 dark:border dark:border-[var(--primary)] dark:border-opacity-20"
                         >
                             <img
                                 src={article.urlToImage || '/placeholder-image.jpg'}
@@ -84,13 +86,13 @@ const NewsUI = () => {
                                 className="w-full h-48 object-cover"
                             />
                             <div className="p-6">
-                                <h2 className="text-xl font-bold mb-2 text-[var(--text)] dark:text-[var(--primary)]">
+                                <h2 className="text-xl font-bold font-jetbrains mb-2 text-[var(--text)] dark:text-[var(--primary)]">
                                     {article.title}
                                 </h2>
-                                <p className="text-[var(--text)] mb-4 dark:text-[var(--text)] dark:text-opacity-90">
+                                <p className="text-[var(--text)] font-robotoSlab mb-4 dark:text-[var(--text)] dark:text-opacity-90">
                                     {article.description}
                                 </p>
-                                <p className="text-sm text-[var(--text)] opacity-70 dark:text-[var(--text)] dark:text-opacity-70">
+                                <p className="text-sm text-[var(--text)] font-jetbrains opacity-70 dark:text-[var(--text)] dark:text-opacity-70">
                                     {new Date(article.publishedAt).toLocaleDateString()}
                                 </p>
                             </div>

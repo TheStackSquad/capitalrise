@@ -35,36 +35,24 @@ const GrowthToggle = ({ onToggle }) => {
                 Growth Type
             </label>
             <div className="flex gap-4">
-                <button
-                    onClick={() => handleToggle('monthly')}
-                    className={`px-4 py-2 rounded-md font-robotoslab-medium ${growthType === 'monthly'
-                            ? 'bg-primary text-white'
-                            : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200'
-                        }`}
-                >
-                    Monthly
-                </button>
-                <button
-                    onClick={() => handleToggle('quarterly')}
-                    className={`px-4 py-2 rounded-md font-robotoslab-medium ${growthType === 'quarterly'
-                            ? 'bg-primary text-white'
-                            : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200'
-                        }`}
-                >
-                    Quarterly
-                </button>
-                <button
-                    onClick={() => handleToggle('6months')}
-                    className={`px-4 py-2 rounded-md font-robotoslab-medium ${growthType === '6months'
-                            ? 'bg-primary text-white'
-                            : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200'
-                        }`}
-                >
-                    6 Months
-                </button>
+                {['monthly', 'quarterly', '6months'].map((type) => (
+                    <button
+                        key={type}
+                        onClick={() => handleToggle(type)}
+                        className={`px-4 py-2 rounded-md font-robotoslab-medium
+                            transition-all duration-300 ease-in-out 
+                        ${growthType === type
+                                ? 'bg-primary text-white scale-105 shadow-md shadow-primary/30'
+                                : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-400 hover:bg-gray-600 dark:hover:bg-gray-800 hover:scale-105'
+                            }`}
+                    >
+                        {type.charAt(0).toUpperCase() + type.slice(1)}
+                    </button>
+                ))}
             </div>
         </div>
     );
 };
 
 export default GrowthToggle;
+// The GrowthToggle component is a controlled component that allows users to toggle between different growth types. The component receives a prop onToggle, which is a function that will be called whenever the user toggles between growth types. The component maintains the current growth type in its local state using the useState hook.
