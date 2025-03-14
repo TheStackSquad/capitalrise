@@ -11,7 +11,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push('/news');
+      router.push('/calculator');
     }, 3000); // Redirect after 3 seconds
 
     return () => clearTimeout(timer);

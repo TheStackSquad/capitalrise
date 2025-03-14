@@ -5,17 +5,40 @@ const staticNews = [
     {
         title: 'Market Recap: Tech Stocks Surge',
         description: 'Latest developments in the tech sector show promising growth trends...',
-        urlToImage: '/placeholder-image.jpg',
+        urlToImage: '/staticImage/tech.webp', // Updated image path
         publishedAt: new Date().toISOString(),
     },
     {
         title: 'Investment Strategy: Compound Growth',
         description: 'Learn how to maximize your returns with these compound growth strategies...',
-        urlToImage: '/placeholder-image.jpg',
+        urlToImage: '/staticImage/stack.webp', // Updated image path
+        publishedAt: new Date().toISOString(),
+    },
+    {
+        title: 'Crypto Market Update: Bitcoin Hits New High',
+        description: 'Bitcoin reaches an all-time high as institutional investors pour in...',
+        urlToImage: '/staticImage/bitcoin.webp', // Updated image path
+        publishedAt: new Date().toISOString(),
+    },
+    {
+        title: 'Real Estate Trends: Urban vs Suburban',
+        description: 'Exploring the shift in real estate demand from urban to suburban areas...',
+        urlToImage: '/staticImage/zegler.webp', // Updated image path
+        publishedAt: new Date().toISOString(),
+    },
+    {
+        title: 'Green Energy Investments on the Rise',
+        description: 'Renewable energy projects attract record investments in 2023...',
+        urlToImage: '/staticImage/green.webp', // Updated image path
+        publishedAt: new Date().toISOString(),
+    },
+    {
+        title: 'Global Supply Chain Challenges',
+        description: 'How supply chain disruptions are impacting global markets...',
+        urlToImage: '/staticImage/energy.webp', // Updated image path
         publishedAt: new Date().toISOString(),
     },
 ];
-
 // Fetch news with caching
 export const fetchNews = async (category = 'business') => {
     const cacheKey = `news-${category}`;
