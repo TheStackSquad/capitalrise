@@ -86,15 +86,17 @@ const Calculator = () => {
             variants={staggerContainer}
             initial="hidden"
             animate="show"
-            className="w-full max-w-6xl mx-auto p-6"
+            className="w-full max-w-6xl mx-auto p-6 bg-darkPrimary text-gray-200 rounded-lg shadow-lg"
         >
+            {/* Title */}
             <motion.h1
                 variants={fadeInUp}
-                className="text-4xl font-bold text-center mb-8 font-spacegrotest-bold"
+                className="text-4xl font-bold text-center mb-8 text-primary font-spacegrotest-bold"
             >
                 Growth Calculator
             </motion.h1>
 
+            {/* Input Fields */}
             <motion.div
                 variants={fadeInUp}
                 className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"
@@ -103,12 +105,14 @@ const Calculator = () => {
                     label="Current Asset Value ($)"
                     value={currentAsset}
                     onChange={(e) => setCurrentAsset(Number(e.target.value))}
-                    placeholder="Enter value" // Add placeholder
+                    placeholder="Enter value"
+                    className="bg-card text-card-foreground border border-gray-700 rounded-lg p-4"
                 />
                 <InputField
                     label="Daily Growth Rate (%)"
                     value={growthRate}
                     onChange={(e) => setGrowthRate(Number(e.target.value))}
+                    className="bg-card text-card-foreground border border-gray-700 rounded-lg p-4"
                 />
             </motion.div>
 
@@ -122,44 +126,49 @@ const Calculator = () => {
                     onChange={(e) => setDays(Number(e.target.value))}
                     step="1"
                     min="1"
+                    className="bg-card text-card-foreground border border-gray-700 rounded-lg p-4"
                 />
                 <GrowthToggle onToggle={handleGrowthTypeToggle} />
             </motion.div>
 
+            {/* Buttons */}
             <motion.div
                 variants={fadeInUp}
                 className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"
             >
                 <button
                     onClick={calculateGrowth}
-                    className="w-full py-4 bg-primary hover:bg-opacity-90 text-white dark:text-primary-foreground font-bold rounded-md transition-transform transform hover:scale-105 font-spacegrotest-bold shadow-md"
+                    className="w-full py-4 bg-primary hover:bg-opacity-90 text-darkPrimary font-bold rounded-md transition-transform transform hover:scale-105 font-spacegrotest-bold shadow-lg"
                 >
                     Calculate Growth
                 </button>
                 <button
                     onClick={resetCalculator}
-                    className="w-full py-4 bg-gray-500 hover:bg-opacity-90 text-white dark:text-primary-foreground font-bold rounded-md transition-transform transform hover:scale-105 font-spacegrotest-bold shadow-md"
+                    className="w-full py-4 bg-gray-600 hover:bg-gray-700 text-white font-bold rounded-md transition-transform transform hover:scale-105 font-spacegrotest-bold shadow-lg"
                 >
                     Reset
                 </button>
             </motion.div>
 
+            {/* Results */}
             {result && (
                 <>
                     <ResultsDisplay result={result} days={days} formatCurrency={formatCurrency} />
                     <button
                         onClick={saveCalculation}
-                        className="w-full py-4 bg-green-500 hover:bg-opacity-90 text-white dark:text-primary-foreground font-bold rounded-md transition-transform transform hover:scale-105 font-spacegrotest-bold shadow-md mb-8"
+                        className="w-full py-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-md transition-transform transform hover:scale-105 font-spacegrotest-bold shadow-lg mb-8"
                     >
                         Save Calculation
                     </button>
                 </>
             )}
 
+            {/* Chart */}
             {chartData.length > 0 && (
                 <GrowthChart chartData={chartData} formatCurrency={formatCurrency} growthType={growthType} />
             )}
         </motion.div>
+
     );
 };
 

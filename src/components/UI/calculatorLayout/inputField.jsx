@@ -5,8 +5,10 @@ import React from 'react';
 
 const InputField = ({ label, value, onChange, type = 'number', step = '0.01', min = '0', placeholder }) => {
     return (
-        <div className="bg-white dark:bg-card p-6 rounded-lg shadow-lg dark:shadow-[var(--shadow-md)]">
-            <label className="block mb-2 text-lg font-jetbrains-medium text-gray-900 dark:text-primary">
+        <div className="bg-white dark:bg-card p-6 rounded-lg shadow-lg dark:bg-gray-300">
+            <label className="block mb-2 text-lg
+            font-jetbrains-medium
+            text-gray-900 ">
                 {label}
             </label>
             <input

@@ -6,7 +6,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 const NavbarContext = createContext();
 
-
 export const NavbarProvider = ({ children }) => {
     const [isOpen, setIsOpen] = useState(() => {
         if (typeof window !== "undefined") {
@@ -28,12 +27,15 @@ export const NavbarProvider = ({ children }) => {
         }
     };
 
+    const closeNavbar = () => {
+        setIsOpen(false);
+    };
+
     return (
-        <NavbarContext.Provider value={{ isOpen, toggleNavbar }}>
+        <NavbarContext.Provider value={{ isOpen, toggleNavbar, closeNavbar }}>
             {children}
         </NavbarContext.Provider>
     );
 };
 
 export const useNavbar = () => useContext(NavbarContext);
-

@@ -1,4 +1,5 @@
 //src/components/motion/dropdown.jsx
+
 "use client";
 
 import { useRef, useEffect } from "react";
@@ -25,7 +26,9 @@ const Dropdown = () => {
 
     return (
         <header className="sticky top-0 bg-primary text-primary-foreground p-4 flex items-center justify-between shadow-md">
-            <h1 className="text-2xl font-bold">Capital Rise</h1>
+            <a href="/" className="inline-block focus:scale-105 hover:scale-105 transition-transform duration-200">
+                <h1 className="text-2xl font-bold">Capital Rise</h1>
+            </a>
 
             {/* Navigation and Icons Container */}
             <div className="flex items-center space-x-6">
@@ -33,6 +36,7 @@ const Dropdown = () => {
                 <nav className="hidden md:flex space-x-6">
                     <a href="/news" className="hover:bg-accent p-2 rounded-md">News</a>
                     <a href="/calculator" className="hover:bg-accent p-2 rounded-md">Calculator</a>
+                    <a href="/market" className="hover:bg-accent p-2 rounded-md">Market</a>
                     <a href="/about-us" className="hover:bg-accent p-2 rounded-md">About</a>
                 </nav>
 
@@ -52,10 +56,11 @@ const Dropdown = () => {
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -10 }}
-                                className="absolute right-0 mt-2 w-40 bg-primary text-primary-foreground shadow-lg rounded-md p-2 space-y-2"
+                                className="absolute right-0 mt-4 w-40 bg-primary text-primary-foreground shadow-lg rounded-md p-2 space-y-2"
                             >
                                 <a href="/news" className="block hover:bg-accent p-2 rounded-md">News</a>
                                 <a href="/calculator" className="block hover:bg-accent p-2 rounded-md">Calculator</a>
+                                <a href="/market" className="block hover:bg-accent p-2 rounded-md">Market</a>
                                 <a href="/about-us" className="block hover:bg-accent p-2 rounded-md">About</a>
                             </motion.div>
                         )}
@@ -67,4 +72,3 @@ const Dropdown = () => {
 };
 
 export default Dropdown;
-

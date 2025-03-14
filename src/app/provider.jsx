@@ -5,6 +5,7 @@
 import { ThemeProvider } from "@/context/themeContext";
 import { NavbarProvider } from "@/context/navbar-context";
 import { SafeHydration } from "@/components/safeHydration";
+import '@/app/globals.css';
 
 export default function Providers({ children }) {
   return (
