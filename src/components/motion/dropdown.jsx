@@ -34,8 +34,8 @@ const Dropdown = () => {
             <div className="flex items-center space-x-6">
                 {/* Large & Medium Screens Navigation */}
                 <nav className="hidden md:flex space-x-6">
-                    <a href="/news" className="hover:bg-accent p-2 rounded-md">News</a>
                     <a href="/calculator" className="hover:bg-accent p-2 rounded-md">Calculator</a>
+                    <a href="/news" className="hover:bg-accent p-2 rounded-md">News</a>
                     <a href="/market" className="hover:bg-accent p-2 rounded-md">Market</a>
                     <a href="/about-us" className="hover:bg-accent p-2 rounded-md">About</a>
                 </nav>
@@ -58,8 +58,8 @@ const Dropdown = () => {
                                 exit={{ opacity: 0, y: -10 }}
                                 className="absolute right-0 mt-4 w-40 bg-primary text-primary-foreground shadow-lg rounded-md p-2 space-y-2"
                             >
-                                <a href="/news" className="block hover:bg-accent p-2 rounded-md">News</a>
                                 <a href="/calculator" className="block hover:bg-accent p-2 rounded-md">Calculator</a>
+                                <a href="/news" className="block hover:bg-accent p-2 rounded-md">News</a>
                                 <a href="/market" className="block hover:bg-accent p-2 rounded-md">Market</a>
                                 <a href="/about-us" className="block hover:bg-accent p-2 rounded-md">About</a>
                             </motion.div>
