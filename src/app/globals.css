@@ -9,15 +9,17 @@
   --font-jetbrains: "JetBrainsMono-Regular", monospace;
   --font-jetbrains-medium: "JetBrainsMono-Medium", monospace;
   --font-spacegrotesk: "SpaceGrotesk-Regular", sans-serif;
-  --font-spacegrotest-bold: "SpaceGrotesk-Bold", sans-serif;
+  --font-spacegrotesk-bold: "SpaceGrotesk-Bold", sans-serif;
 
   /* Light Theme */
   --background: #ffffff;
   --text: #1a1a1a;
   --primary: #007bff;
   --primary-foreground: #ffffff;
-  --card: #ffffff;
+  --card: #f9f9f9;
   --card-foreground: #1a1a1a;
+  --button-bg: #ffcc00;
+  --button-text: #1a1a1a;
 
   /* Light Theme Shadows */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -27,13 +29,35 @@
   --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.12);
 }
 
-[data-theme="dark"] {
+.dark {
   --background: #121212;
-  --text: #eaeaea;
-  --primary: #ffcc00;
-  --primary-foreground: #1a1a1a;
+  --text: #e0e0e0;
   --card: #1e1e1e;
-  --card-foreground: #eaeaea;
+  /* Slightly lighter than background */
+--card-foreground: #ffcc00;
+  --popover: #282828;
+  /* Even lighter for popover elements */
+  --popover-foreground: #e0e0e0;
+  --primary: #ffcc00;
+  --primary-foreground: #121212;
+  --button-bg: #ffcc00;
+  --button-text: #121212;
+  --muted: #282828;
+  --muted-foreground: #b0b0b0;
+  --accent: #333333;
+  --accent-foreground: #e0e0e0;
+  /* --border: #333333; */
+  --input: #333333;
+  --ring: #ffcc00;
+
+  --border: rgba(255, 204, 0, 0.5);
+    --button-bg: #ffcc00;
+    --button-text: #1a1a1a;
+
+  /* Enhanced yellow palette for dark theme */
+  --primary-light: #ffe066;
+  --primary-dark: #d4a700;
+  --primary-bg: #332b00;
 
   /* Dark Theme Shadows - softer with colored glow */
   --shadow-sm: 0 2px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(255, 204, 0, 0.03);
@@ -43,11 +67,69 @@
   --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.6), 0 10px 15px rgba(255, 204, 0, 0.05);
 }
 
+/* Light Theme Gradient */
+.light .bg-gradient-light {
+  background: linear-gradient(135deg, #ffcc00 20%, #ff6600 80%);
+}
+
+/* Dark Theme Gradient */
+.dark .bg-gradient-dark {
+  background: linear-gradient(135deg, #1a1a1a 20%, #333333 50%, #121212 90%);
+}
+
+/* Radial Gradient for Depth */
+.bg-gradient-radial {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 80%);
+  position: absolute;
+  inset: 0;
+}
+
+/* Animated Gradient Movement */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.animate-gradient-move {
+  animation: gradientMove 10s infinite alternate ease-in-out;
+  background-size: 400% 400%;
+}
+
 body {
   color: var(--text);
   background-color: var(--background);
   font-family: var(--font-robotoslab);
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  filter: brightness(1.1);
+}
+
+.card {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  border-radius: 8px;
 }
 
 /* Font imports */
