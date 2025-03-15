@@ -10,12 +10,16 @@ import GrowthChart from '@/components/UI/calculatorLayout/growthChart';
 import { fadeInUp, staggerContainer } from '@/components/motion/animation';
 
 const Calculator = () => {
-    const [currentAsset, setCurrentAsset] = useState(0); // Set initial value to 0
+    const [currentAsset, setCurrentAsset] = useState('');
     const [growthRate, setGrowthRate] = useState(2);
     const [days, setDays] = useState(30);
     const [growthType, setGrowthType] = useState('monthly'); // Default to 'monthly'
     const [result, setResult] = useState(null);
     const [chartData, setChartData] = useState([]);
+
+    const handleAssetChange = (e) => {
+        setCurrentAsset(e.target.value);
+    };
 
     // Handle growth type toggle
     const handleGrowthTypeToggle = (type, days) => {
@@ -107,12 +111,19 @@ const Calculator = () => {
                     onChange={(e) => setCurrentAsset(Number(e.target.value))}
                     placeholder="Enter value"
                     className="bg-card text-card-foreground border border-gray-700 rounded-lg p-4"
+                    inputType="currency"
+                    tooltipText="The current value of your asset before growth"
+                    name="currentAsset"
                 />
                 <InputField
                     label="Daily Growth Rate (%)"
                     value={growthRate}
                     onChange={(e) => setGrowthRate(Number(e.target.value))}
                     className="bg-card text-card-foreground border border-gray-700 rounded-lg p-4"
+                    inputType="percentage"
+                    placeholder="Enter growth rate"
+                    tooltipText="The percentage by which your asset will grow each day"
+                    name="growthRate"
                 />
             </motion.div>
 
@@ -127,6 +138,10 @@ const Calculator = () => {
                     step="1"
                     min="1"
                     className="bg-card text-card-foreground border border-gray-700 rounded-lg p-4"
+                    inputType="number"
+                    placeholder="Enter number of days"
+                    tooltipText="The period of time over which the growth will be calculated"
+                    name="days"
                 />
                 <GrowthToggle onToggle={handleGrowthTypeToggle} />
             </motion.div>
