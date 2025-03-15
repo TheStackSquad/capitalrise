@@ -7,6 +7,12 @@ import InputField from '@/components/UI/calculatorLayout/inputField';
 import GrowthToggle from '@/components/UI/calculatorLayout/growthToggle';
 import ResultsDisplay from '@/components/UI/calculatorLayout/resultDisplay';
 import GrowthChart from '@/components/UI/calculatorLayout/growthChart';
+import SlidePanel from '@/components/motion/slidePanel';
+import Modal from '@/components/modal/modal';
+import { showError, showWarning, showSuccess, ToastContainer } from '@/utils/alertManager';
+import { useCalculations } from '@/context/calculationContext';
+
+
 import { fadeInUp, staggerContainer } from '@/components/motion/animation';
 
 const Calculator = () => {
@@ -16,10 +22,13 @@ const Calculator = () => {
     const [growthType, setGrowthType] = useState('monthly'); // Default to 'monthly'
     const [result, setResult] = useState(null);
     const [chartData, setChartData] = useState([]);
+    const [selectedCalculation, setSelectedCalculation] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    
+    const [isSaving, setIsSaving] = useState(false);
 
-    const handleAssetChange = (e) => {
-        setCurrentAsset(e.target.value);
-    };
+    // Get the addCalculation function from context
+    const { addCalculation, savedCalculations } = useCalculations();
 
     // Handle growth type toggle
     const handleGrowthTypeToggle = (type, days) => {
@@ -70,10 +79,64 @@ const Calculator = () => {
         setChartData([]);
     };
 
+    // Updated saveCalculation function
     const saveCalculation = () => {
-        const savedCalculations = JSON.parse(localStorage.getItem('savedCalculations')) || [];
-        savedCalculations.push({ currentAsset, growthRate, days, result });
-        localStorage.setItem('savedCalculations', JSON.stringify(savedCalculations));
+        try {
+            // Create current calculation object
+            const currentCalculation = {
+                currentAsset,
+                growthRate,
+                days,
+                result,
+                growthType,
+                timestamp: Date.now()
+            };
+
+            // Check if result is undefined or null
+            if (!result) {
+                showWarning("No calculation result to save!");
+                return false;
+            }
+
+            // Check if this exact calculation already exists
+            const isDuplicate = savedCalculations.some(calc =>
+                calc.currentAsset === currentCalculation.currentAsset &&
+                calc.growthRate === currentCalculation.growthRate &&
+                calc.days === currentCalculation.days &&
+                calc.growthType === currentCalculation.growthType
+            );
+
+            if (isDuplicate) {
+                showWarning("This calculation is already saved!");
+                return false;
+            }
+
+            // Add calculation to shared state
+            addCalculation(currentCalculation);
+
+            // Show success message
+            showSuccess("Calculation saved successfully!");
+            return true;
+        } catch (error) {
+            console.error("Error saving calculation:", error);
+            showError("Failed to save calculation. Please try again.");
+            return false;
+        }
+    };
+
+    const handleSave = () => {
+        setIsSaving(true);
+
+        setTimeout(() => {
+            try {
+                saveCalculation();
+            } catch (error) {
+                console.error("Unhandled error in saveCalculation:", error);
+                showError("Something went wrong. Please try again.");
+            } finally {
+                setIsSaving(false);
+            }
+        }, 500);
     };
 
     const formatCurrency = (value) => {
@@ -85,13 +148,28 @@ const Calculator = () => {
         }).format(value);
     };
 
+    const openModal = (calculation) => {
+        setSelectedCalculation(calculation);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
     return (
+          <>
+            {/* SlidePanel placed outside the Calculator wrapper */}
+            <SlidePanel onCardClick={openModal} />
+            <ToastContainer />
+
         <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="show"
             className="w-full max-w-6xl mx-auto p-6 bg-darkPrimary text-gray-200 rounded-lg shadow-lg"
         >
+
             {/* Title */}
             <motion.h1
                 variants={fadeInUp}
@@ -99,7 +177,8 @@ const Calculator = () => {
             >
                 Growth Calculator
             </motion.h1>
-
+          
+            {isModalOpen && <Modal calculation={selectedCalculation} onClose={closeModal} />}
             {/* Input Fields */}
             <motion.div
                 variants={fadeInUp}
@@ -169,12 +248,22 @@ const Calculator = () => {
             {result && (
                 <>
                     <ResultsDisplay result={result} days={days} formatCurrency={formatCurrency} />
-                    <button
-                        onClick={saveCalculation}
-                        className="w-full py-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-md transition-transform transform hover:scale-105 font-spacegrotest-bold shadow-lg mb-8"
-                    >
-                        Save Calculation
-                    </button>
+                        <button
+                            onClick={handleSave}
+                            disabled={isSaving}
+                            className="w-full py-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-md transition-transform transform hover:scale-105 font-spacegrotest-bold shadow-lg mb-8 relative"
+                        >
+                            {isSaving ? (
+                                <>
+                                    <span className="opacity-0">Save Calculation</span>
+                                    <span className="absolute inset-0 flex items-center justify-center">
+                                        Saving...
+                                    </span>
+                                </>
+                            ) : (
+                                "Save Calculation"
+                            )}
+                        </button>
                 </>
             )}
 
@@ -183,6 +272,8 @@ const Calculator = () => {
                 <GrowthChart chartData={chartData} formatCurrency={formatCurrency} growthType={growthType} />
             )}
         </motion.div>
+         
+         </>
 
     );
 };

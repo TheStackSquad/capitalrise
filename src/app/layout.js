@@ -2,6 +2,7 @@
 
 import Providers from "@/app/provider";
 import Dropdown from "@/components/motion/dropdown";
+import { CalculationProvider } from '@/context/calculationContext';
 import "@/app/globals.css";
 
 export const metadata = {
@@ -28,12 +29,13 @@ export const metadata = {
   },
 };
 
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="antialiased">
         <Providers>
-          <Dropdown />  {/* Ensure this is inside Providers */}
+          <Dropdown />
           {children}
         </Providers>
       </body>
