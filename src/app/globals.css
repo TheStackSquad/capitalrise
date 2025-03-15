@@ -16,7 +16,8 @@
   --text: #1a1a1a;
   --primary: #007bff;
   --primary-foreground: #ffffff;
-  --card: #f9f9f9;
+  --card: rgb(250, 196, 97);
+  --cardAlte: #523f3f;
   --card-foreground: #1a1a1a;
   --button-bg: #ffcc00;
   --button-text: #1a1a1a;
@@ -35,6 +36,7 @@
   --card: #1e1e1e;
   /* Slightly lighter than background */
 --card-foreground: #ffcc00;
+  --card-foregroundAlte: rgb(248, 131, 89);
   --popover: #282828;
   /* Even lighter for popover elements */
   --popover-foreground: #e0e0e0;
