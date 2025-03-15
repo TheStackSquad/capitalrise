@@ -17,7 +17,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "https://res.cloudinary.com/dobwoeo5p/image/upload/v1742068124/capitalRise_binoie.jpg", // Cloudinary URL
+        url: "https://res.cloudinary.com/dobwoeo5p/image/upload/f_auto,q_auto,w_1200,h_630/v1742068124/capitalRise_binoie.jpg", // Optimized Cloudinary URL
         width: 1200,
         height: 630,
         alt: "Capital Rise Banner",
@@ -28,7 +28,7 @@ export const metadata = {
     card: "summary_large_image", // Use "summary_large_image" for images
     title: "Capital Rise - Asset Growth Calculator & Financial News",
     description: "Track asset growth with our smart calculator and stay updated with financial news.",
-    images: ["https://res.cloudinary.com/dobwoeo5p/image/upload/v1742068124/capitalRise_binoie.jpg"], // Cloudinary URL
+    images: ["https://res.cloudinary.com/dobwoeo5p/image/upload/f_auto,q_auto,w_1200,h_630/v1742068124/capitalRise_binoie.jpg"], // Optimized Cloudinary URL
   },
 };
 
